@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ویس پرایم — یک دستیار صوتی، برای تمام کارهای روزمره</title>
+<meta name="description" content="ویس پرایم، دستیار صوتی هوشمند فارسی‌محور است که تبدیل گفتار به نوشتار، ترجمه، فرمان صوتی، تبدیل نوشتار به گفتار و چت‌بات را در یک اپلیکیشن آفلاین‌پذیر برای ویندوز، اندروید و لینوکس کنار هم می‌آورد.">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0a0918">
+<meta property="og:title" content="ویس پرایم — دستیار صوتی هوشمند فارسی‌محور">
+<meta property="og:description" content="دستیار صوتی هوشمند با تبدیل گفتار به نوشتار، ترجمه، فرمان صوتی، تبدیل نوشتار به گفتار و چت‌بات — آفلاین‌پذیر و برای ویندوز، اندروید و لینوکس.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fa_IR">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "VoicePrime",
+  "alternateName": "ویس پرایم",
+  "description": "دستیار صوتی هوشمند با پشتیبانی فارسی و انگلیسی، کارکرد آفلاین و آنلاین، و ترکیب چندین قابلیت در یک اپلیکیشن.",
+  "applicationCategory": "VoiceAssistant",
+  "operatingSystem": "Windows, Android, Linux",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "IRR"
+  },
+  "inLanguage": "fa"
+}
+</script>
+
+<script>
+(function () {
+  try {
+    var stored = localStorage.getItem("voiceprime-theme");
+    var theme = (stored === "light" || stored === "dark")
+      ? stored
+      : (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+    document.documentElement.setAttribute("data-theme", theme);
+  } catch (e) {
+    document.documentElement.setAttribute("data-theme", "dark");
+  }
+})();
+</script>
+
+<link rel="icon" type="image/png" href="assets/logo/voiceprime-logo.png">
+<link rel="apple-touch-icon" href="assets/logo/voiceprime-logo.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="home">
+
+<a class="skip-link" href="#main" data-i18n="aria.skip">رفتن به محتوای اصلی</a>
+
+<!-- Icon Sprite -->
+<svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+<defs>
+<symbol id="icon-mic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="9" y="2" width="6" height="12" rx="3"></rect>
+  <path d="M5 11a7 7 0 0 0 14 0"></path>
+  <line x1="12" y1="18" x2="12" y2="22"></line>
+  <line x1="8" y1="22" x2="16" y2="22"></line>
+</symbol>
+<symbol id="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+</symbol>
+<symbol id="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="4"></circle>
+  <line x1="12" y1="2" x2="12" y2="4"></line>
+  <line x1="12" y1="20" x2="12" y2="22"></line>
+  <line x1="4" y1="12" x2="2" y2="12"></line>
+  <line x1="22" y1="12" x2="20" y2="12"></line>
+  <line x1="5.6" y1="5.6" x2="4.2" y2="4.2"></line>
+  <line x1="19.8" y1="19.8" x2="18.4" y2="18.4"></line>
+  <line x1="18.4" y1="5.6" x2="19.8" y2="4.2"></line>
+  <line x1="4.2" y1="19.8" x2="5.6" y2="18.4"></line>
+</symbol>
+<symbol id="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <line x1="4" y1="6" x2="20" y2="6"></line>
+  <line x1="4" y1="12" x2="20" y2="12"></line>
+  <line x1="4" y1="18" x2="20" y2="18"></line>
+</symbol>
+<symbol id="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <line x1="6" y1="6" x2="18" y2="18"></line>
+  <line x1="18" y1="6" x2="6" y2="18"></line>
+</symbol>
+<symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <polyline points="4 13 9 18 20 6"></polyline>
+</symbol>
+<symbol id="icon-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <line x1="6" y1="12" x2="18" y2="12"></line>
+</symbol>
+<symbol id="icon-dot" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+  <circle cx="12" cy="12" r="5"></circle>
+</symbol>
+<symbol id="icon-bubble" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8A2.5 2.5 0 0 1 17.5 16H10l-4.5 4v-4H6.5A2.5 2.5 0 0 1 4 13.5v-8z"></path>
+</symbol>
+<symbol id="icon-terminal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="2" y="4" width="20" height="16" rx="3"></rect>
+  <polyline points="6 9 10 12 6 15"></polyline>
+  <line x1="12" y1="15" x2="17" y2="15"></line>
+</symbol>
+<symbol id="icon-speaker" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M4 9v6h4l5 4V5L8 9H4z"></path>
+  <path d="M16.5 8.5a5 5 0 0 1 0 7"></path>
+  <path d="M19 6a8.5 8.5 0 0 1 0 12"></path>
+</symbol>
+<symbol id="icon-translate" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M7 7h10"></path>
+  <polyline points="14 4 17 7 14 10"></polyline>
+  <path d="M17 17H7"></path>
+  <polyline points="10 14 7 17 10 20"></polyline>
+</symbol>
+<symbol id="icon-wifi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M2 8.5a16 16 0 0 1 20 0"></path>
+  <path d="M5 12a11 11 0 0 1 14 0"></path>
+  <path d="M8.5 15.5a6 6 0 0 1 7 0"></path>
+  <circle cx="12" cy="19" r="1" fill="currentColor" stroke="none"></circle>
+</symbol>
+<symbol id="icon-wifi-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M2 8.5a16 16 0 0 1 20 0"></path>
+  <path d="M5 12a11 11 0 0 1 14 0"></path>
+  <path d="M8.5 15.5a6 6 0 0 1 7 0"></path>
+  <circle cx="12" cy="19" r="1" fill="currentColor" stroke="none"></circle>
+  <line x1="3" y1="3" x2="21" y2="21"></line>
+</symbol>
+<symbol id="icon-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M12 3v12"></path>
+  <polyline points="7 11 12 16 17 11"></polyline>
+  <path d="M5 19h14"></path>
+</symbol>
+<symbol id="icon-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+  <polyline points="3 7 12 13 21 7"></polyline>
+</symbol>
+<symbol id="icon-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M6.5 3h3l1.5 5-2.5 2a12 12 0 0 0 5.5 5.5l2-2.5 5 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 5.2 2 2 0 0 1 6.5 3z"></path>
+</symbol>
+<symbol id="icon-telegram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <polygon points="3,11 22,3 15,21 11,13 3,11"></polygon>
+  <line x1="11" y1="13" x2="22" y2="3"></line>
+</symbol>
+<symbol id="icon-baleh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-9l-4 3v-3H6a2 2 0 0 1-2-2V6z"></path>
+  <polyline points="8 10 10.5 12.5 15 8"></polyline>
+</symbol>
+<symbol id="icon-windows" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round">
+  <rect x="3" y="3" width="8" height="8"></rect>
+  <rect x="13" y="3" width="8" height="8"></rect>
+  <rect x="3" y="13" width="8" height="8"></rect>
+  <rect x="13" y="13" width="8" height="8"></rect>
+</symbol>
+<symbol id="icon-android" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M7 10h10v6a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-6z"></path>
+  <path d="M8 9v6"></path>
+  <path d="M16 9v6"></path>
+  <path d="M9 10 7.5 7"></path>
+  <path d="M15 10l1.5-3"></path>
+  <circle cx="9.5" cy="12.6" r="0.6" fill="currentColor" stroke="none"></circle>
+  <circle cx="14.5" cy="12.6" r="0.6" fill="currentColor" stroke="none"></circle>
+</symbol>
+<symbol id="icon-linux" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="6" r="3"></circle>
+  <ellipse cx="12" cy="14.5" rx="5" ry="7"></ellipse>
+  <circle cx="10.6" cy="5.6" r="0.4" fill="currentColor" stroke="none"></circle>
+  <circle cx="13.4" cy="5.6" r="0.4" fill="currentColor" stroke="none"></circle>
+  <ellipse cx="12" cy="16" rx="2" ry="3.6" fill="currentColor" stroke="none"></ellipse>
+</symbol>
+<symbol id="icon-sparkle" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+  <path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z"></path>
+</symbol>
+<symbol id="icon-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <line x1="5" y1="12" x2="19" y2="12"></line>
+  <polyline points="12 5 19 12 12 19"></polyline>
+</symbol>
+</defs>
+</svg>
+
+<div class="bg-ambient" aria-hidden="true"></div>
+
+<!-- =====================================================================
+     NAVIGATION
+     ===================================================================== -->
+<header class="nav" id="siteNav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__brand" data-i18n-aria="aria.logo" aria-label="صفحه‌ی اصلی ویس پرایم">
+      <img src="assets/logo/voiceprime-logo.png" alt="VoicePrime" width="34" height="34">
+      <span>VoicePrime</span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#why" data-i18n="nav.why">چرا ویس پرایم</a>
+      <a href="#capabilities" data-i18n="nav.capabilities">قابلیت‌ها</a>
+      <a href="comparison.html" data-i18n="nav.compare">مقایسه</a>
+      <a href="#get-started" data-i18n="nav.download">دانلود</a>
+      <a href="#contact" data-i18n="nav.contact">تماس</a>
+    </nav>
+
+    <div class="nav__actions">
+      <button type="button" class="icon-toggle theme-toggle" id="themeToggle" aria-pressed="false" data-i18n-aria="aria.themeToggle" aria-label="تغییر بین پوسته‌ی روشن و تیره">
+        <svg class="icon icon-sun" aria-hidden="true"><use href="#icon-sun"></use></svg>
+        <svg class="icon icon-moon" aria-hidden="true"><use href="#icon-moon"></use></svg>
+      </button>
+
+      <button type="button" class="lang-toggle" id="langToggle" data-i18n-aria="aria.langToggle" aria-label="تغییر زبان به انگلیسی">EN</button>
+
+      <a href="#get-started" class="btn btn--primary btn--sm" data-i18n="nav.cta">دانلود</a>
+
+      <button type="button" class="nav__burger" id="navBurger" aria-expanded="false" aria-controls="mobilePanel" data-i18n-aria="aria.menuOpen" aria-label="باز کردن منو">
+        <svg class="icon" aria-hidden="true"><use href="#icon-menu"></use></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile navigation panel -->
+<div class="mobile-panel" id="mobilePanel">
+  <div class="mobile-panel__inner">
+    <div style="display:flex;justify-content:flex-end;">
+      <button type="button" class="icon-toggle" id="mobilePanelClose" data-i18n-aria="aria.menuClose" aria-label="بستن منو">
+        <svg class="icon" aria-hidden="true"><use href="#icon-close"></use></svg>
+      </button>
+    </div>
+    <nav class="mobile-panel__links" aria-label="Mobile">
+      <a href="#why" data-i18n="nav.why">چرا ویس پرایم</a>
+      <a href="#capabilities" data-i18n="nav.capabilities">قابلیت‌ها</a>
+      <a href="comparison.html" data-i18n="nav.compare">مقایسه</a>
+      <a href="#get-started" data-i18n="nav.download">دانلود</a>
+      <a href="#contact" data-i18n="nav.contact">تماس</a>
+    </nav>
+    <a href="#get-started" class="btn btn--primary btn--block" data-i18n="hero.ctaPrimary">دانلود ویس پرایم</a>
+  </div>
+</div>
+
+<main id="main">
+
+  <!-- ===================================================================
+       HERO (with microphone effect)
+       =================================================================== -->
+  <section class="hero" id="hero">
+    <div class="hero__mic-bg" aria-hidden="true">
+      <div class="hero__mic-glyph">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="9" y="2" width="6" height="12" rx="3"></rect>
+          <path d="M5 11a7 7 0 0 0 14 0"></path>
+          <line x1="12" y1="18" x2="12" y2="22"></line>
+          <line x1="8" y1="22" x2="16" y2="22"></line>
+        </svg>
+      </div>
+      <div class="hero__mic-waves">
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+
+    <div class="container hero__inner">
+      <span class="badge badge--brand hero__badge reveal">
+        <span class="dot"></span>
+        <span data-i18n="hero.badge">دستیار صوتی هوشمند</span>
+      </span>
+
+      <h1 class="hero__title reveal" data-i18n="hero.title">ویس پرایم، یک دستیار صوتی، برای تمام کار های روزمره ات، با دنیایی از قابلیت ها</h1>
+
+      <p class="hero__subtitle reveal" data-i18n="hero.subtitle">ویس پرایم، تبدیل گفتار به نوشتار، ترجمه، فرمان صوتی، تبدیل نوشتار به گفتار و چت‌بات را در یک دستیار سریع و آفلاین‌پذیر کنار هم می‌آورد؛ با پشتیبانی جدی از فارسی و انگلیسی.</p>
+
+      <div class="hero__cta-row reveal">
+        <a href="#get-started" class="btn btn--primary" data-i18n="hero.ctaPrimary">دانلود ویس پرایم</a>
+        <a href="#why" class="btn btn--secondary" data-i18n="hero.ctaSecondary">با ویس پرایم بیشتر آشنا شوید</a>
+      </div>
+
+      <div class="hero__platforms reveal">
+        <span><svg class="icon" aria-hidden="true"><use href="#icon-windows"></use></svg></span>
+        <span><svg class="icon" aria-hidden="true"><use href="#icon-android"></use></svg></span>
+        <span><svg class="icon" aria-hidden="true"><use href="#icon-linux"></use></svg></span>
+      </div>
+      <p class="hero__platforms-caption reveal" data-i18n="hero.platforms">برای ویندوز، اندروید و لینوکس</p>
+
+      <div class="hero__visual reveal" aria-hidden="true">
+        <div class="prime-orb">
+          <div class="prime-orb__glow"></div>
+          <div class="prime-orb__ring"></div>
+          <div class="prime-orb__disc">
+            <svg class="prime-orb__mic"><use href="#icon-mic"></use></svg>
+            <div class="prime-orb__bars">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       WHY VOICEPRIME
+       =================================================================== -->
+  <section class="section" id="why">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-i18n="why.eyebrow">چرا ویس پرایم</span>
+        <h2 class="section-title" data-i18n="why.title">ابزارهای روزمره نباید در چند اپلیکیشن جدا پخش باشند</h2>
+      </div>
+
+      <div class="why__grid" id="whyGrid"><!-- rendered by main.js --></div>
+
+      <p class="why__closing reveal"><span class="grad-text" data-i18n="why.closing">ویس پرایم ساخته شده تا این سه خلأ را هم‌زمان پر کند.</span></p>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       CAPABILITIES
+       =================================================================== -->
+  <section class="section" id="capabilities">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-i18n="capabilities.eyebrow">ویس پرایم چه کاری انجام می‌دهد</span>
+        <h2 class="section-title" data-i18n="capabilities.title">پنج توانایی واقعی، در یک دستیار</h2>
+        <p class="section-subtitle" data-i18n="capabilities.subtitle">همه‌ی این قابلیت‌ها کنار هم و در دل یک دستیار کار می‌کنند؛ نه سوییچ بین اپلیکیشن‌ها، نه تکرار دوباره‌ی حرف‌هایت.</p>
+      </div>
+
+      <div class="cap__grid" id="capGrid"><!-- rendered by main.js --></div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       OFFLINE + ONLINE
+       =================================================================== -->
+  <section class="section section--tight" id="hybrid">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-i18n="hybrid.eyebrow">آفلاین + آنلاین</span>
+        <h2 class="section-title" data-i18n="hybrid.title">طوری ساخته شده که حتی بدون اینترنت هم کار کند</h2>
+        <p class="section-subtitle" data-i18n="hybrid.subtitle">ویس پرایم پردازش روی دستگاه را با قابلیت آنلاین ترکیب می‌کند؛ یعنی قطعی اینترنت به معنای از کار افتادن دستیارت نیست.</p>
+      </div>
+
+      <div class="hybrid__grid">
+        <div class="card hybrid__col hybrid__col--offline reveal">
+          <div class="hybrid__col-icon"><svg class="icon" aria-hidden="true"><use href="#icon-wifi-off"></use></svg></div>
+          <h3 data-i18n="hybrid.offlineTitle">بدون اینترنت هم کار می‌کند</h3>
+          <p data-i18n="hybrid.offlineBody">بخش عمده‌ی قابلیت‌های ویس پرایم مستقیماً روی دستگاه تو پردازش می‌شوند.</p>
+          <ul class="hybrid__list" id="hybridOfflineList"><!-- rendered by main.js --></ul>
+        </div>
+        <div class="card hybrid__col hybrid__col--online reveal">
+          <div class="hybrid__col-icon"><svg class="icon" aria-hidden="true"><use href="#icon-wifi"></use></svg></div>
+          <h3 data-i18n="hybrid.onlineTitle">به اتصال اینترنت نیاز دارد</h3>
+          <p data-i18n="hybrid.onlineBody">تنها یک قابلیت برای فکرکردن به یک اتصال زنده وابسته است.</p>
+          <ul class="hybrid__list" id="hybridOnlineList"><!-- rendered by main.js --></ul>
+        </div>
+      </div>
+
+      <p class="hybrid__footnote reveal" data-i18n="hybrid.footnote">بیشترِ چیزی که هرروز از آن استفاده می‌کنی، بدون اینترنت هم کار می‌کند. تنها استثنا چت‌بات است که برای پاسخ‌دادن به یک اتصال زنده نیاز دارد.</p>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       PERSIAN + ENGLISH STRENGTH
+       =================================================================== -->
+  <section class="section lang-section" id="languages">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-i18n="languages.eyebrow">برای فارسی ساخته شده، برای انگلیسی هم آماده</span>
+        <h2 class="section-title" data-i18n="languages.title">فارسی این‌جا در حاشیه نیست؛ نقطه‌ی شروع است</h2>
+      </div>
+
+      <div class="lang__stage reveal" aria-hidden="true">
+        <span class="lang__word">سلام</span>
+        <span class="lang__divider"></span>
+        <span class="lang__word lang__word--en">Hello</span>
+      </div>
+
+      <p class="lang__body reveal" data-i18n="languages.body">ویس پرایم از پایه بر اساس گفتار واقعی فارسی و شیوه‌ی واقعیِ حرف‌زدن فارسی‌زبانان با اپلیکیشن‌هایشان طراحی شده؛ نه به‌عنوان یک افزونه‌ی ترجمه‌شده روی محصولی انگلیسی‌محور. انگلیسی هم با همان جدیت پشتیبانی می‌شود؛ در نتیجه در هر دو حالت، یک دستیار واقعاً دوزبانه در اختیار داری.</p>
+
+      <div class="lang__grid" id="langCards"><!-- rendered by main.js --></div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       COMPARE SUMMARY (short, links to comparison.html)
+       =================================================================== -->
+  <section class="section" id="compare">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-i18n="compareSummary.eyebrow">چرا ویس پرایم</span>
+        <h2 class="section-title" data-i18n="compareSummary.title">یک سر و گردن بالاتر از دستیارهای صوتی معمولی</h2>
+      </div>
+
+      <div class="compare-summary reveal" id="compareSummary">
+        <!-- rendered by main.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       GET STARTED
+       =================================================================== -->
+  <section class="section" id="get-started">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-i18n="getStarted.eyebrow">همه‌جا در دسترس</span>
+        <h2 class="section-title" data-i18n="getStarted.title">ویس پرایم را روی دستگاهت نصب کن</h2>
+        <p class="section-subtitle" data-i18n="getStarted.subtitle">یک دستیار، سه پلتفرم؛ همین حالا دانلود کن و از همه‌ی قابلیت‌ها استفاده کن.</p>
+      </div>
+
+      <div class="platforms__grid" id="platformGrid"><!-- rendered by main.js --></div>
+
+      <div class="personalize-strip glass reveal">
+        <svg class="icon" aria-hidden="true"><use href="#icon-sparkle"></use></svg>
+        <span data-i18n="getStarted.personalize">با هفت پوسته‌ی قابل‌انتخاب، ویس پرایم را همان‌طور که دوست داری شخصی‌سازی کن.</span>
+      </div>
+
+      <div class="final-cta reveal">
+        <h3 data-i18n="getStarted.finalTitle">برای دستیاری که همه‌کاره است، آماده‌ای؟</h3>
+        <p data-i18n="getStarted.finalSubtitle">روی ویندوز، اندروید و لینوکس در دسترس است. همین حالا دانلود کن یا برای همکاری با ما در تماس باش.</p>
+        <div class="final-cta__actions">
+          <a href="#platformGrid" class="btn btn--primary" data-i18n="getStarted.finalCtaPrimary">دانلود ویس پرایم</a>
+          <a href="#contact" class="btn btn--secondary" data-i18n="getStarted.finalCtaSecondary">تماس با ما</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       CONTACT
+       =================================================================== -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-i18n="contact.eyebrow">همکاری و اسپانسرشیپ</span>
+        <h2 class="section-title" data-i18n="contact.title">بیایید صحبت کنیم</h2>
+        <p class="section-subtitle" data-i18n="contact.subtitle">برای همکاری یا اسپانسرشیپ، مستقیم با تیم ویس پرایم در تماس باشید.</p>
+      </div>
+
+      <div class="contact__grid" id="contactGrid"><!-- rendered by main.js --></div>
+    </div>
+  </section>
+
+</main>
+
+<!-- =====================================================================
+     FOOTER
+     ===================================================================== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <div class="footer__brand-row">
+          <img src="assets/logo/voiceprime-logo.png" alt="VoicePrime" width="32" height="32">
+          <span>VoicePrime</span>
+        </div>
+        <p class="footer__tagline" data-i18n="footer.tagline">یک دستیار صوتی، برای همه‌ی کارهای روزمره‌ات.</p>
+      </div>
+
+      <div class="footer__col">
+        <h3 data-i18n="footer.navTitle">کاوش</h3>
+        <ul>
+          <li><a href="#why" data-i18n="nav.why">چرا ویس پرایم</a></li>
+          <li><a href="#capabilities" data-i18n="nav.capabilities">قابلیت‌ها</a></li>
+          <li><a href="comparison.html" data-i18n="nav.compare">مقایسه</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h3 data-i18n="footer.downloadTitle">دانلود</h3>
+        <ul>
+          <li><a href="#get-started" data-i18n="nav.download">دانلود</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h3 data-i18n="footer.contactTitle">تماس</h3>
+        <ul>
+          <li><a href="mailto:voiceprimeteam@gmail.com">voiceprimeteam@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span id="footerRights"></span>
+      <span>VoicePrime</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/config.js" defer></script>
+<script src="js/i18n.js" defer></script>
+<script src="js/main.js" defer></script>
+</body>
+</html>
